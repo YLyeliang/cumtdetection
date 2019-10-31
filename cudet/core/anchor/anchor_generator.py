@@ -85,10 +85,10 @@ class AnchorGenerator(object):
         valid_x[:valid_w] =1
         valid_y[:valid_h]=1
         valid_xx, valid_yy = self._meshgrid(valid_x,valid_y)
-        # all valid region are set to 1.
+        # all same valid region are set to 1.
         valid = valid_xx & valid_yy
         valid = valid[:,None].expand(
-            valid.size(0),self.num_base_anchors).contiguous().view(-1)  # (valid size,num anchor).view(-1) valid:(validH*validW*numAnchor)
+            valid.size(0),self.num_base_anchors).contiguous().view(-1)  # (valid size,num anchor).view(-1) valid:(featH*featW*numAnchor)
         return valid
 
 
